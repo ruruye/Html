@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JOIN</title>
+<link rel="stylesheet" href="../css/join.css">
+<link rel="shortcut icon" type="image/x-icon" href="../images/clothesWebLogo.png"/>
+
+</head>
+
+<body>
+
+<form>
+	<audio src="../multi/Rinne - Cooking Time!.mp3" controls autoplay></audio>
+	<h1>Welcome to ruCabinet</h1><br><br>
+	
+	<fieldset>
+	
+		<legend>회원정보입력</legend>
+		<div>
+			<label for="id" class="input-label">아이디</label>
+			<input type="text" name="id" id="id" class="input-text">
+			<input id=test type="button" value="중복검사" class="input-button">
+		</div>
+		<div>
+			<label for="pw" class="input-label">패스워드</label>
+			<input type="password" name="pw" id="pw" class="input-text">
+		</div>
+		<div>
+			<label for="pwchk" class="input-label">패스워드확인</label>
+			<input type="password" name="pwchk" id="pwchk" class="input-text">
+		</div>
+		<div>
+			<label for="name" class="input-label">이름</label>
+			<input type="text" name="name" placeholder="홍길동" id="name" class="input-text">
+		</div>
+		<div>
+			<label for="tel" class="input-label">휴대폰번호</label>
+			<input type="tel" placeholder="010-1234-5678" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" class="input-text">
+		</div>
+		<div>
+			<label for="email" class="input-label">이메일</label>
+			<input type="email" placeholder="ruruye@gmail.com" pattern="[a-zA-Z]+[0-9]*@[a-zA-Z]+[0-9]*(\.[a-zA-Z]+){1,2}" class="input-text">
+		</div>
+		<div>
+			<label for="bir" class="input-label">생일</label>
+			<input type="date" name="bir" id="bir" class="input-text">
+		</div>
+		<div>
+			<label for="web" class="input-label">홈페이지</label>
+			<input type="text" name="web" placeholder="www.rucabinet.com" id="web" class="input-text">
+		</div>
+		<div>
+			<span class="input-label">성별</span>
+			<input type="radio" name="gender" id="male" value="Male" class="input-radio">
+			<label for="male" class="radio-label">남자</label>
+			<input type="radio" name="gender" id="female" value="Female" class="input-radio">
+			<label for="female" class="radio-label">여자</label>
+		</div>
+		<div>
+			<input type="submit" id="submit" class="form-button">
+   			<input type="reset" id="reset" class="form-button">
+		</div>
+	</fieldset>
+
+</form>
+</body>
+</html>

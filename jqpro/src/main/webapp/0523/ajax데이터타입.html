@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+
+<style>
+.dflex{
+	display : flex;
+}
+.dflex .result{
+	flex : 25%;
+}
+</style>
+
+
+<script>
+
+let xhr = new XMLHttpRequest();
+
+// <input type="button" value="json배열" id="arr" onclick="arrProc()">
+// function arrProc(){}
+
+$(function(){
+	
+	// objarr----------------------
+	$("#objarr").on('click', function(){
+		// 입력한 값들 가져온다 - val()
+		
+		// 전송
+		xhr.open('get', 'objarr.jsp', true);
+		xhr.send();
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				
+				res = JSON.parse(this.responseText);
+				
+				code = "";
+				$.each(res, function(i, v){
+					code += `
+						****${i+1}번째 회원정보****<br>
+						<p>아이디 : ${v.id} </p>
+						<p>이름 : ${v.name} </p>
+						<p>전화번호 : ${v.tel} </p>
+						<p>주소 : ${v.addr} </p>
+						`
+					}) // $.each
+					
+					$('#result4').html(code);
+				
+				
+				
+				
+			} // if
+		} //onreadystatechange
+	}) // click
+	
+	
+	
+	// jobj----------------------
+	$("#jobj").on('click', function(){
+		// 입력한 값들 가져온다 - val()
+		
+		// 전송
+		xhr.open('get', 'jsonObj.jsp', true);
+		xhr.send();
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				
+				res = JSON.parse(this.responseText);
+				
+				code = `<p>아이디 : ${res.id} </p>
+						<p>이름 : ${res.name} </p>
+						<p>전화번호 : ${res.tel} </p>
+						<p>주소 : ${res.addr} </p>
+						`
+				$('#result3').html(code);
+				
+				
+			} // if
+			
+		} // onreadystatechange
+	})
+	
+	
+	
+	
+	// 배열----------------------
+	$('#arr').on('click', function(){
+		// 입력한 값들 가져온다 - val()
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				
+				res = JSON.parse(this.responseText);
+				// res = [ "진달래", "무궁화", "수선화", "라일락", "들국화", "백장미" ]
+				
+				code = "<ol>"
+				
+				$.each(res, function(i){
+					code += "<li>" + res[i] + "</li>";
+				})
+				
+				code += "</ol>"
+				
+				$("#result2").html(code);
+				
+			} // if
+			
+		} // onreadystatechange
+		
+		// 전송
+		xhr.open('get', 'arr.jsp', true);
+		xhr.send();
+		
+	})
+	
+	
+	
+	// 텍스트-----------------------------
+	//$('#text').on('click', function(){})
+	$(document).on('click', '#text', function(){
+		
+		
+		// 전송
+		xhr.open('get', 'text.jsp', true);
+		xhr.send();
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				res = this.responseText;
+				// res = 홍길동/개나리/진달래/무궁화/삼천리/금수강산
+				
+				names = res.split("/"); // names배열
+				
+				//$(name).each(function(){})
+				code = '<ul>'
+				$.each(names, function(i){
+					code += "<li>" + names[i] + "</li>"
+				})
+				code += "</ul>"
+				
+				$('#result1').html(code);
+			}
+		}
+		
+	})
+	
+	
+	
+})
+</script>
+
+</head>
+<body>
+
+<div class="box">
+	<h3></h3>
+
+	<input type="button" value="text" id="text">
+	<input type="button" value="json배열" id="arr">
+	<input type="button" value="json객체" id="jobj">
+	<input type="button" value="json객체배열" id="objarr">
+	
+	<div class="dflex">
+		<div id="result1" class="result"></div>
+		<div id="result2" class="result"></div>
+		<div id="result3" class="result"></div>
+		<div id="result4" class="result"></div>
+	</div>
+	
+</div>
+</body>
+</html>

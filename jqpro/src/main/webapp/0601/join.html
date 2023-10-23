@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="../js/jquery.serializejson.min.js"></script>
+<script>
+$(function(){
+	
+	// 전송버튼 클릭이벤트
+	$('#send').on('click', function(){
+		// 입력한 모든 값을 가져온다 - id, name, pass, bir, hp, mail, zip, add1, add2
+		
+		/* 
+		idvalue = $('#uid').val();
+		namevalue = $('#uname').val();
+		passvalue = $('#pwd').val();
+		birvalue = $('#ubir').val();
+		hpvalue = $('#uhp').val();
+		mailvalue = $('#umail').val();
+		zipvalue = $('#uzip').val();
+		add1value = $('#uadd1').val();
+		add2value = $('#uadd2').val();
+		
+		console.log(idvalue, namevalue, passvalue, birvalue, hpvalue, mailvalue, zipvalue, add1value, add2value);
+		
+		fdata = {
+				"id" : idvalue,
+				"name" : idvalue,
+				"pass" : passvalue,
+				"bir" : birvalue,
+				"hp" : hpvalue,
+				"mail" : mailvalue,
+				"zip" : zipvalue,
+				"add1" : add1value,
+				"add2" : add2value
+		}
+		
+		console.log(fdata);
+		
+		fdata2 = "id=" + idvalue +"&name=" + idvalue + "&pass" + passvalue  
+		*/
+		
+		fdata1 = $('form').serialize();
+		fdata2 = $('form').serializeJSON();
+		
+		console.log(fdata1);
+		console.log(fdata2);
+		
+		
+		$.ajax({
+			url : '/jqpro/Insert.do',
+			data : fdata2,
+			type : 'post',
+			success : function(res){
+				//alert(res.flag);
+				$('#joinsp').html(res.flag).css('color', 'red');
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+
+		}) 
+		
+	}) // click
+	
+	//--------------------------------------------------------------------
+	// 우편번호검색결과 modal창에서 클릭 이벤트 = delegate방식 - 새롭게 생성된 요소
+	$(document).on('click', '.ziptr', function(){
+ 	//	$('td:eq(0)', this)
+		zcode = $('td', this).eq(0).text();
+		addr = $('td', this).eq(1).text();
+		
+		console.log(zcode, addr)
+		
+		// 부모창에 출력하기
+		$('#uzip').val(zcode);
+		$('#uadd1').val(addr);
+		
+		// 모달창 내용지우기
+		$('#dong').val("");
+		$('#result1').empty();
+		// 모달창 닫기
+		$('#myModal').modal('hide');
+	})
+	
+	// 우편번호 modal창 열기 - 특별한 이벤트 없다
+	
+	// 우편번호 modal창에서 확인버튼 클릭이벤트
+	$('input[value=확인]').on('click', function(){
+		
+		// 입력한 동이름을 가져온다
+		dongvalue = $('#dong').val();
+		
+		$.ajax({
+			url : '/jqpro/ZipSearch.do',
+			data : { "dong" : dongvalue},
+			type : 'post',
+			success : function(res){
+				
+				code = "<table class='table'>";
+				code += "<tr><td>우편번호</td>";
+				code += "<td>주소</td><td>번지</td></tr>";
+				
+				$.each(res, function(i, v){
+					code += "<tr class='ziptr'><td>" + res[i].zipcode + "</td>";
+					code += "<td>" + res[i].addr + "</td><td>" + res[i].bunji + "</td></tr>";
+				})
+				
+				code += "</table>";
+				$('#result1').html(code);
+				
+			},
+			error : function(xhr){
+				alert("상태 :" + xhr.status);
+			},
+			dataType : 'json'
+		}) // ajax
+		
+	}) //click이벤트
+	
+	//------------------------------------------------------------------------------
+	// 우편번호검색 - 창열기
+	$('#openzip').on('click', function(){
+		
+		window.open("zipSearch.html", "우편번호찾기", "width=400 height=500")
+	})
+	
+	
+	// id중복검사
+	$('#checkid').on('click', function(){
+		
+		// 입력한 id를 가져온다
+		idvalue = $('#uid').val();
+		
+		$.ajax({
+			url : '/jqpro/CheckId.do',
+			data : { "id" : idvalue},
+			type : 'get',
+			success : function(res){
+				//alert(res.flag);
+				$('#spid').html(res.flag).css('color', 'red');
+			},
+			error : function(xhr){
+				alert("상태 :" + xhr.status);
+			},
+			dataType : 'json'
+			
+		})
+		
+	})
+})
+
+</script>
+
+
+<style>
+form * {
+	margin : 0px;
+}
+input[type=text], input[type=password], input[type=date]{
+	width : 200px;
+}
+#uadd1, #uadd2{
+	width: 500px;
+}
+#result1{
+	font-size: 1.0rem;
+}
+.ziptr:hover{
+	background : lime;
+}
+</style>
+
+
+</head>
+<body>
+
+<div class="container">
+  <h2>회원가입</h2>
+  
+  <form class="needs-validation" novalidate>
+   <div class="form-group">
+      <label for="uid">아이디</label>
+      <input type="button" class="btn btn-outline-success btn-sm" value="중복검사" id="checkid">
+      <span id="spid"></span>
+      <input type="text" class="form-control form-control-sm" id="uid" name="mem_id">
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+  
+    <div class="form-group">
+      <label for="uname">이름</label>
+      <input type="text" class="form-control form-control-sm" id="uname" name="mem_name">
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="umail">이메일</label>
+      <input type="text" class="form-control form-control-sm" id="umail" name="mem_mail">
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="ubir">생년월일</label>
+      <input type="date" class="form-control form-control-sm" id="ubir" name="mem_bir">
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="uhp">전화번호</label>
+      <input type="text" class="form-control form-control-sm" id="uhp" name="mem_hp">
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="pwd">비밀번호</label>
+      <input type="password" class="form-control form-control-sm" id="pwd" name="mem_pass" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="uzip">우편번호</label>
+      <input type="button" class="btn btn-outline-success btn-sm" value="번호검색" id="openzip">
+      <input data-bs-toggle="modal" data-bs-target="#myModal" type="button" class="btn btn-outline-success btn-sm" value="번호검색modal">
+      <input type="text" class="form-control form-control-sm" id="uzip" name="mem_zip">
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="uadd1">주소</label>
+      <input type="text" class="form-control form-control-sm" id="uadd1" name="mem_add1">
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="uadd2">상세주소</label>
+      <input type="text" class="form-control form-control-sm" id="uadd2" name="mem_add2">
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    
+    <button id="send" type="button" class="btn btn-primary btn-lg">전송</button>
+    <span id="joinsp"></span>
+  </form>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">우편번호 찾기</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <input type=text id="dong">
+		<input type="button" value="확인">
+		<div id="result1" class="result"></div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

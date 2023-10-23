@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+proc1 = () => {
+	arr = ["바나나", "사과", "복숭아", "참외", "수박"];
+	
+	arrPrint(arr, 'result1');
+}
+proc2 = () => {
+	arr2 = new Array("바나나", "파인애플", "망고", "참외", "딸기");
+	
+	arrPrint(arr2, 'result2');
+}
+
+function arrPrint(arr, result){
+	
+	document.getElementById(result).innerHTML = arr;
+	
+}
+</script>
+</head>
+<body>
+<div class="box">
+	<h3>리터럴배열 const fruits = ["apple", "banana", "peach"];<br>
+	<br>
+	const fruits =[];<br>
+	fruits[0] = "파인애플"; fruits[1] = "수박";<br>
+	</h3>
+	
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	<div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>
+	Array배열객체 const fruits = new Array();<br>
+	Array배열객체 const fruits = new Array(5);<br>
+	fruits[0] = "파인애플"; fruits[1] = "수박";<br><br>
+	
+	Array배열객체 const fruits = new Array("사과","바나나","복숭아");
+	</h3>
+	
+	
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	<div id="result2" class="result"></div>
+</div>
+</body>
+</html>

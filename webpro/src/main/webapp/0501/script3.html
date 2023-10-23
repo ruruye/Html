@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function proc1(){
+	// var는 변수 중복가능 but 덮어쓰기 됨 --> let 사용
+	let today = new Date();
+	let day1 = today.toLocaleString(); // 우리는 2023. 5. 1. 오전 11:40:50
+	
+	let day2 =  today.toLocaleDateString(); // 2023. 5. 1.
+	let day3 = today.toLocaleTimeString(); // 오전 11:40:50
+	
+	// 출력내용 // HTML태그포함
+	let str = "오늘은 " + today + "<br>";
+	str += "우리는 " + day1 + "<br>";
+	str += "우리의 날짜 " + day2 + "<br>";
+	str += "우리의 시간 " + day3 + "<br>";
+	
+	
+	// id가 res인 요소를 검색 후.출력, div검색
+	//document.querySelector('#res').innerText = str; // HTML태그를 문자로 취급해서 <br>이 그대로나옴
+	document.querySelector('#res').innerHTML = str;
+}
+</script>
+</head>
+<body>
+	<input type="button" value="확인" onclick="proc1()">
+	<div id="res"></div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+body {
+    background-color: #EBFBFF;
+}
+
+a {
+text-decoration: none;
+}
+
+header {
+    font-size: 2.5rem;
+}
+
+header .logo {
+    height: 48px;
+}
+
+header a {
+    font-size: 3.5rem;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+nav {
+    background-color: #E0EBFF;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+nav > ul {
+    padding: 16px 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+nav > ul > li > a {
+    font-size: 1.0rem;
+    color: #c8c8c8;
+    letter-spacing: 8px;
+}
+
+#content {
+    display: flex;
+    margin: 4px 0;
+}
+
+aside {
+    background-color: #FFE3EE;
+    flex: 1 1 20%;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+#left-aside > ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+#left-aside > ul > li {
+    padding: 32px 0;
+}
+
+#left-aside > ul > li > a {
+    font-size: 1.5rem;
+    color: white;
+}
+
+section {
+    flex: 1 1 60%;
+    background-color: #EBFBFF;
+    max-width: 100%;
+}
+iframe {
+    border: 0 solid black;
+    width: 100%;
+    height: 100%;
+}
+
+#login {
+    margin: 32px 0;
+}
+#login > div {
+	padding: 24px 0;
+}
+
+#login input {
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    background-color: #F9FFFF;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 700px) {
+    #content, nav > ul {
+        width: 100%;
+        flex-direction: column;           
+    }
+iframe {
+        max-width: 640px;
+        max-height: 360px;
+    }
+}
+
+.font-sil {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.font-default {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+.input-label {
+    display: inline-block;
+}
+.input-text {
+    display: block;
+    width: 100%;
+    color: #212529;
+    line-height: 2.5;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+.button {
+    display: inline-block;
+    width: 68px;
+    padding: 8px;
+    margin: 4px 0;
+    font-size: 0.8rem;
+    background-color: #fafabe;
+    border: 2px solid black;
+    color: black;
+    border-radius: 8px;
+    text-align: center;
+}
+.button-long {
+    margin: 4px 0;
+    padding: 8px 0;
+    width: 100%;
+}
+#loginBox > input {
+    margin: 16px 0;
+}
+#resetbtn{
+    background : #FAFABE;
+	font-size : 0.8rem;
+	width : 78px;
+	height : 36px;
+	border-radius: 8px;
+}
+.button:active{
+	text-decoration: underline; 
+	color : blue; 
+	background-color: #A4C3FF;
+	transition: 0.1s;
+}
+#resetbtn:active{
+	text-decoration: underline; 
+	color : blue; 
+	background-color: #A4C3FF;
+	transition: 0.1s;
+}        

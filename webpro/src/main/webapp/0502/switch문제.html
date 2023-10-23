@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+function proc1(){
+	// 두개의 수와 연산자를 입력
+	let su1 = parseInt(prompt("정수1입력"));
+	let su2 = parseInt(prompt("정수2입력"));
+	
+	let op = prompt("연산자 입력");
+	
+	let res = "";
+	
+	// 비교
+	switch (op) {
+	case "+":
+		res = su1 + su2;
+		break;
+	case "-":
+		res = su1 - su2;
+		break;
+	case "*":
+		res = su1 * su2;
+		break;
+	case "/":
+		res = su1 / su2;
+		break;
+	}
+		res = res.toFixed(2);
+		
+	// 출력내용 34 - 12 = 22
+	str = `${su1} ${op} ${su2} = ${res}`;
+	
+	// 출력
+	document.getElementById('result1').innerHTML = str;
+	//document.querySelector('#result1').innerHTML = str;
+}
+
+function proc2(){
+	// 입력
+	let su = parseInt(prompt("점수입력", "1~100"));
+	
+	// 입력값이 0~100범위의 값인지 비교
+	if(su<0 || su>100){
+		alert("입력범위를 벗어났습니다");
+		return false;
+	}
+	
+	// 학점을 위한 비교
+// 	if(su >=90){ // 90~100
+// 		alert("A");
+// 	}else if(su>=80){
+// 		alert("B");
+// 	}else if(su>=70){
+// 		alert("C");
+// 	}else if(su>=60){
+// 		alert("D");
+// 	}else{			// 0~59
+// 		res = "F";
+// 	}
+	
+	let score = "";
+	switch(parseInt(su / 10)) {
+	    case 10:
+	    case 9:
+	        score = "A";
+	        break;
+	    case 8:
+	        score = "B";
+	        break;
+	    case 7:
+	        score = "C";
+	        break;
+	    case 6:
+	        score = "D";
+	        break;
+	    default:
+	        score = "F";
+	        break;
+	   }
+
+	   alert(score);
+	
+	// 출력내용
+	/*
+	str = 점수 : 99
+		  학점 : A학점
+	*/
+	str = "점수 : " + su + "<br>" + "학점 : " + score + "학점"
+		  
+	// 출력
+	document.getElementById('result2').innerHTML = str;
+}
+</script>
+</head>
+<body>
+<div class="box">
+	<h3>prompt를 이용하여 2개의 수와 연산자를 입력한다</h3>
+	<h3>연산자를 비교(switch)하여 계산 후 결과를 출력한다</h3>
+	
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	<div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>prompt를 이용하여 점수를 입력하여 학점을 출력한다</h3>
+	<h3>점수를 비교(switch)하여 결과(A~F)를 출력한다</h3>
+	
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	<div id="result2" class="result"></div>
+</div>
+</body>
+</html>

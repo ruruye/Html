@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+today = new Date();
+
+function proc1(){
+	//myday = new Date("2000.06.14");	
+	//myday = new Date(2000, 06-1, 14);
+	myday = new Date("2020.05.08");
+	
+	// getTime()을 이용해서 millisec값 구하기
+	totime = today.getTime();
+	mytime = myday.getTime();
+	
+	console.log(totime, mytime);
+	
+	times = totime - mytime;
+	
+	years = times/1000/60/60/24/365;
+	years = parseInt(years);
+	
+	str = `오늘 : ${today.toLocaleString()} <br>`;
+//	str += `나의 생일 : ${myday.toLocaleString()} <br>`;
+	str += `우리만날날 : ${myday.toLocaleString()} <br>`;
+	str += `지금까지 : ${years}년째 살고 있습니다 <br>`;
+	
+	document.getElementById('result1').innerHTML = str;
+}
+
+// 500일후
+proc2 = () => {
+	// 현재날짜의 getTime -> millisec값
+	totime = today.getTime();
+	
+	// 500일에 대한 millisec값 구하기
+	after500 = 500 * 1000 * 60 * 60 * 24
+	
+	console.log(totime, after500);
+	
+	times = totime + after500;
+	day500 = new Date(times);
+	
+	str = `오늘 : ${today.toLocaleString()} <br>`;
+	str += `500일 후 : ${day500.toLocaleString()} <br>`;
+	
+	document.getElementById('result2').innerHTML = str;
+	
+}
+
+// 구입
+proc3 = () => {
+	// id=sel인 요소로 접근(검색) -> 선택한 날을 가져온다 -> value(value에서 가져온 결과값은 String)
+	selvalue = document.getElementById('sel').value;
+	
+	// selvalue변수로 Date객체를 생성한다.
+	selday = new Date(selvalue);
+	
+	// 오늘과 선택한 날의 간격을 구한다
+	// 오늘의 getTime() - 선택한 날의 getTime(); --> 총 millisec값 구해짐
+	times = today.getTime() - selday.getTime();
+	
+	// 총 millsec값 가지고 /1000/60/60/24 -> 몇일의 결과값을 얻음
+	days = times/1000/60/60/24;
+	
+	// 비교 7일이 지났는지 안지났는지 경과
+	if(days > 7){
+		res = "교환/환불 불가능";
+	}else{
+		res = "교환/환불 가능";
+	}
+	
+	// 출력
+	str = `구입날짜 : ${selday.toLocaleDateString()} <br>`; 
+	str += `오늘날짜 : ${today.toLocaleString()} <br>`;
+	str += res;
+	
+	// id=result3인 요소를 검색하여 출력
+	document.getElementById('result3').innerHTML = str;
+}
+</script>
+</head>
+
+<body>
+
+<div class="box">
+	<h3>태어난 날로부터 현재까지의 날 수 구하기</h3>
+
+	<input type="button" value="확인" onclick="proc1()">
+	<div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>현재로부터 500일 후의 날짜 구하기</h3>
+
+	<input type="button" value="확인" onclick="proc2()">
+	<div id="result2" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>구입날짜를 선택하여 7일이 경과했는지 비교</h3>
+	<h3>7일을 기준으로 교환/환불 가능/불가능을 출력한다</h3>
+	
+	구입날짜 선택 : <input type="date" id="sel">
+	<input type="button" value="확인" onclick="proc3()">
+	<div id="result3" class="result"></div>
+</div>
+</body>
+</html>

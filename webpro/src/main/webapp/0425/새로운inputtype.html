@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<pre>
+	(정규식) : 입력데이터의 형식을 규정
+	
+	[a-z]
+	[A-Z]
+	[a-zA-Z]
+	[a-zA-Z0-9] : 순서x
+	[a-z][A-Z][0-9] 
+	(전화번호)
+	[0-9] : 0~9사이
+	{3}   : 3번
+	{1,2} : 1번 또는 2번
+	[0-9]{3}-[0-9]{4}-[0-9]{4}
+	
+	(이메일)
+	+  : 한번 이상
+	*  : 0번 이상(올수도있고 안올수도있음)
+	?  : 0 또는 1
+	() : 그룹
+	.  : 모든 글자를 한글자로 대응(모든글자 올수있음)
+	\. : .자체 글자
+	
+	kk123@naver.com
+	Abc999@ddit.or.kr
+	kk123@w3.org
+	A123333@naver.com
+	A@naver.com
+	하나로 묶어주면 순서상관x
+	[a-zA-Z]+[0-9]*@[a-zA-Z]+[0-9]*(\.[a-zA-Z]+){1,2} 
+	
+	
+	</pre>
+	
+	<input type="month"><br>
+	<input type="time"><br>
+	<input type="week"><br>
+	
+	<form action="telcheck.jsp" method="post">
+		전화번호<input type="text" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br>
+		전화번호<input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br>
+		
+		<br>
+		이메일<input type="text" size=10 pattern="[a-zA-Z]+[0-9]*@[a-zA-Z]+[0-9]*(\.[a-zA-Z]+){1,2}"><br>
+		이메일<input type="email" pattern="[a-zA-Z]+[0-9]*@[a-zA-Z]+[0-9]*(\.[a-zA-Z]+){1,2}"><br>
+		
+		
+		신발사이즈
+		<input type="number" min="190" max="300" step="5" value="200"><br>
+		<input type="range" min="190" max="300" step="5" value="200">
+		
+		<br><br>
+		<input type="submit">
+	</form>
+</body>
+</html>

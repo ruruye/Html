@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+function proc1(){
+	// 두개의 수와 연산자를 입력
+	let su1 = parseInt(prompt("정수1입력"));
+	let su2 = parseInt(prompt("정수2입력"));
+	
+	let op = prompt("연산자 입력");
+	
+	let res = "";
+	
+	
+	// 비교
+	if(op == "+"){
+		res = su1 + su2;
+	}else if(op == "-"){
+		res = su1 - su2;
+	}else if(op == "*"){
+		res = su1 * su2;
+	}else if(op == "/"){
+		res = su1 / su2;
+		
+		res = res.toFixed(2);
+	}
+	
+	// 출력내용 34 - 12 = 22
+	str = `${su1} ${op} ${su2} = ${res}`;
+	
+	// 출력
+	document.getElementById('result1').innerHTML = str;
+	//document.querySelector('#result1').innerHTML = str;
+}
+
+function proc2(){
+	// 입력
+	let user1 = prompt("첫번째 사람 입력");
+	let user2 = prompt("두번째 사람 입력");
+	
+	
+	// 비교
+	let res="";
+	
+	if (user1==user2){
+		res ="비겼습니다!";
+		}else if (user1=="바위"	&&	user2=="가위"	||
+				  user1=="가위"	&&	user2=="보"||
+				  user1=="보"	&&	user2=="바위"	){
+		res ="첫번째 사람이 이겼습니다!";
+		}else{
+		res ="두번째 사람이 이겼습니다!";
+	}
+	
+	// 출력내용
+	str = "첫번째 사람 : " + user1 + "<br>";
+	str += "두번째 사람 : " + user2 + "<br>";
+	str += "결과 : " + res + "<br>";
+	
+	// 출력
+	// id가 result2인 요소를 검색 -> 출력
+	document.getElementById('result2').innerHTML = str;
+	// document.querySelector('#result2').innnerHTML = str;
+}
+</script>
+</head>
+<body>
+<div class="box">
+	<h3>prompt를 이용하여 2개의 수와 연산자를 입력한다</h3>
+	<h3>연산자를 비교하여 계산 후 결과를 출력한다</h3>
+	
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	<div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>prompt를 이용하여 두 사람의 가위바위보를 입력한다</h3>
+	<h3>결과를 출력한다</h3>
+	
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	<div id="result2" class="result"></div>
+</div>
+</body>
+</html>

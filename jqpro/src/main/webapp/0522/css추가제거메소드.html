@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+
+<script>
+$(function(){
+	
+	// result1
+	/* $('#result1 p').on('mouseover', function(){
+		$(this).addClass('pp1');
+	})
+	$('#result1 p').on('mouseout', function(){
+		$(this).removeClass('pp1');
+	}) */
+	
+	$('#result1 p').on({
+		'mouseover' : function() {
+			$(this).addClass('pp1');
+		},
+		'mouseout' : function() {
+			$(this).removeClass('pp1');
+		},
+		'click' : function(){
+			$(this).css('font-size', '+=5px')
+		}
+	})
+	
+	
+	// result2
+	$('#result2 p').on('click', function(){
+		$(this).toggleClass('pp1'); // 클릭하면 add, remove 둘다 기능함
+	})
+	
+	// result3 - toggle과 같은 효과
+	$('#result3 p').on('click', function(){
+		if($(this).hasClass('pp1')){
+			$(this).removeClass('pp1');
+		}else{
+			$(this).addClass('pp1');
+		}
+	})
+})
+</script>
+
+<style>
+.pp1{
+	color : red;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+
+	<div id="result1" class="result">
+	
+		<p class="pp1">무궁화 꽃이 피었습니다</p>
+		<p>장미 꽃이 피었습니다</p>
+		<p>라일락 꽃이 피었습니다</p>
+		<p>사랑은 늘 도망가</p>
+	
+	</div>
+</div>
+
+<!-- <script>
+$('p').on('mouseover', function(){})
+</script> -->
+
+
+<div class="box">
+
+	<div id="result2" class="result">
+	
+		<p class="pp1">무궁화 꽃이 피었습니다</p>
+		<p>장미 꽃이 피었습니다</p>
+		<p>라일락 꽃이 피었습니다</p>
+		<p>사랑은 늘 도망가</p>
+	
+	</div>
+</div>
+
+<div class="box">
+
+	<div id="result3" class="result">
+	
+		<p class="pp1">무궁화 꽃이 피었습니다</p>
+		<p>장미 꽃이 피었습니다</p>
+		<p>라일락 꽃이 피었습니다</p>
+		<p>사랑은 늘 도망가</p>
+	
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+function proc1(){
+	
+	sum = 0;
+	inputstr = "";
+	
+	while(true){
+		// 입력
+		su = parseInt(prompt("수 입력하세요"));
+		
+		// 입력한 값을 누적
+		sum += su;
+		inputstr += su + " ";
+		
+		// 계속할래? - true / false
+		cont = confirm("계속할래??");
+		if(!cont) break;
+	}
+	
+	// 출력내용
+	str = "입력한 값 :  " + inputstr + "<br>"; 
+	str += "더한 합 = " + sum;
+	
+	// 출력
+	document.getElementById('result1').innerHTML = str;
+}
+
+function proc2(){
+	
+	
+	str = "";
+	
+	while(true){
+		// 구구단 수를 입력 5 // parseInt는 +할때만 필요
+	    gu = prompt("수 입력");
+		
+		// 출력내용
+		str += "****" + gu + "단****<br>"
+		gugures = "";
+		
+		// 1~9
+		for(i=1; i<10; i++){
+			// 5 * 1 = 5
+			gugures += `${gu} * ${i} = ${gu*i} <br>`;
+		}
+		//출력내용
+		str += gugures
+		
+		// 계속할래?
+		cont = confirm("계속?");
+		if(!cont) break;
+	}
+	
+	
+	// 출력
+	document.getElementById('result2').innerHTML = str;
+}
+</script>
+</head>
+<body>
+<div class="box">
+  <h3>사용자가 입력한 값을 계속 더하고, 누적된 값을 출력하고<br>
+  		계속 입력여부를 물어본다(confirm) </h3>
+
+  
+  <input type="button" value="확인" onclick="proc1()">
+  <br><br>
+  <div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+  <h3>입력한 수의 구구단을 출력하고<br>
+  		계속 입력여부를 물어본다(confirm) </h3>
+
+  
+  <input type="button" value="확인" onclick="proc2()">
+  <br><br>
+  <div id="result2" class="result"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ul{
+	list-style-type: none;
+	border : 3px solid red;
+	border-left : none;
+	border-right : none;
+	padding : 20px;
+	width: 80%;
+	margin : 10px auto;
+	text-align: center;
+	background : yellow;
+}
+
+ul li{/*ul안 li*/
+	display : inline; /*옆으로*/
+	/*border : 2px solid blue;*/
+	margin : 20px;
+	
+}
+
+ul li a{/*밑줄없애기*/
+	text-decoration: none;
+	/*border : 1px solid green;*/
+	font-size : 2.0em;
+	letter-spacing: 15px;/*글자간격*/
+}
+
+ul li a:hover{ /*마우스 올려놨을때*/
+	background : lightgray;
+}
+
+ul li a:active{/*누르는순간*/
+	text-decoration: underline;
+	color : green;
+}
+</style>
+</head>
+<body>
+<ul>
+	<li><a href="http://www.naver.com">Home</a></li>
+	<li><a href="#">Project</a></li>
+	<li><a href="#">Notice</a></li>
+	<li><a href="#">QnA</a></li>
+</ul>
+</body>
+</html>

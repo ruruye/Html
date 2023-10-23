@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+
+<style>
+.siblings * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 5px;
+}
+.box .result{
+	font-size : 1.0rem;
+}
+.start{
+	border : 1px solid black;
+	color : black;
+}
+</style>
+
+<script>
+$(function(){
+	// 띄우는 건 후손을 의미
+	$('#next').on('click', function(){
+		$('#result1 .start').next().css({"border" : "1px solid red", "color" : "red"});
+	})
+	
+	$('#nexta').on('click', function(){
+		$('#result1 .start').nextAll().css({"border" : "1px solid blue", "color" : "blue"});
+	})
+	
+	$('#nextun').on('click', function(){
+		$('#result1 .start').nextUntil($('#result1 li:last')).css({"border" : "1px solid green", "color" : "green"});
+	})
+	
+	// prev
+	$('#prev').on('click', function(){
+		$('#result2 .start').prev().css({"border" : "1px solid red", "color" : "red"});
+	})
+	
+	$('#preva').on('click', function(){
+		$('#result2 .start').prevAll().css({"border" : "1px solid blue", "color" : "blue"});
+	})
+	
+	$('#prevun').on('click', function(){
+		$('#result2 .start').prevUntil($('#result2 li:first')).css({"border" : "1px solid green", "color" : "green"});
+	})
+	
+	// parent
+	$('#parent').on('click', function(){
+		$('#result3 span').parent().css({"border" : "1px solid red", "color" : "red"});
+	})
+	$('#parents').on('click', function(){
+		$('#result3 span').parents().css({"border" : "1px solid green", "color" : "green"});
+	})
+	$('#parentss').on('click', function(){
+		$('#result3 span').parents('ul').css({"border" : "1px solid blue", "color" : "blue"});
+	})
+	$('#parentsun').on('click', function(){
+		$('#result3 span').parentsUntil('#result3').css({"border" : "1px solid hotpink", "color" : "hotpink"});
+	})
+	
+	// btn
+	$('.btn').on('click', function(){
+		$(this).prev().find('span').css({"border" : "1px solid red", "color" : "red"}); // 내가 누른거 기준의 span태그 찾아라
+		//$(this).parent().find('span').css({"border" : "1px solid red", "color" : "red"}); // 직속부모 class = siblings
+		//$(this).parents('.result').find('span').css({"border" : "1px solid red", "color" : "red"}); // 전체조상들 중 특정요소 class=result 찾기
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+	<h3></h3>
+
+	<input type="button" value="next" id="next">
+	<input type="button" value="nextall" id="nexta">
+	<input type="button" value="nextunt" id="nextun">
+	
+	<div id="result1" class="result">
+		<div style="width:500px;" class="siblings">
+		  <ul>ul (parent)  
+		    <li>li (sibling)</li>
+		    <li>li (sibling)</li>
+		    <li class="start">li (sibling with class name "start")</li>
+		    <li>li (the next sibling of li with class name "start")</li>
+		    <li>li (sibling)</li>
+		    <li>li (sibling)</li>
+		    <li>li (sibling)</li>
+		    <li>li (sibling)</li>
+
+		  </ul>   
+		</div>
+	
+	
+	</div>
+</div>
+
+
+<div class="box">
+	<h3></h3>
+
+	<input type="button" value="prev" id="prev">
+	<input type="button" value="prevall" id="preva">
+	<input type="button" value="prevunt" id="prevun">
+	
+	<div id="result2" class="result">
+		<div style="width:500px;" class="siblings">
+		  <ul>ul (parent)
+		    <li>li (sibling)</li>
+		    <li>li (sibling)</li>
+		    <li>li (sibling)</li>  
+		    <li>li (sibling)</li>
+		    <li>li (sibling)</li>
+		    <li class="start">li (sibling with class name "start")</li>
+		    <li>li (the next sibling of li with class name "start")</li>
+		    <li>li (sibling)</li>
+		  </ul>   
+		</div>
+	</div>
+</div>
+
+<div class="box">
+
+	<input type="button" value="parent" id="parent">
+	<input type="button" value="parents" id="parents">
+	<input type="button" value="parentss" id="parentss">
+	<input type="button" value="parentsun" id="parentsun">
+	
+	<div id="result3" class="result">
+		<div style="width:500px;" class="siblings">
+		  <ul>ul (grandparent)  
+	          <li>li (direct parent)
+	          <span>span</span>
+	          </li>
+          </ul>   
+		</div>
+	</div>
+</div>
+
+<div class="box">
+
+	
+	<div id="result4" class="result">
+		<div style="width:500px;" class="siblings">
+		  <ul>ul (grandparent)
+	          <li>li (direct parent)
+		          <span>span</span>
+	          </li>
+          </ul>
+            <input type="button" value="확인" class="btn"> 
+		</div>
+	</div>
+	
+	<div id="result5" class="result">
+		<div style="width:500px;" class="siblings">
+		  <ul>ul (grandparent)
+	          <li>li (direct parent)
+		          <span>span</span>
+	          </li>
+          </ul>
+          <input type="button" value="확인" class="btn">   
+		</div>
+	</div>
+</div>
+</body>
+</html>

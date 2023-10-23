@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+vstr = "대한민국 우리나라 좋은나라 대한민국";
+
+//substring
+proc1 = () => {
+	sub = vstr.substring(1,5); // 1~4까지 - 한민국 // sub,vstr는 전역변수 -> let 붙이면 vstr무조건 전역, sub는 지역
+	res = "vstr.substring(1,5)";
+	printStr('result1');
+}
+
+function printStr(result){
+	
+	str = vstr + "<br>";
+	str += res + " : " + sub + "<br>";
+	
+	document.getElementById(result).innerHTML = str;
+}
+
+// slice
+proc2 = () => {
+	sub = vstr.slice(5,9); // 5~8까지 - 우리나라 // sub의 결과는 문자열
+	res = "vstr.slice(5,9)";
+	
+	printStr('result2');
+}
+function printStr(result){
+	
+	str = vstr + "<br>";
+	str += res + " : " + sub + "<br>";
+	
+	document.getElementById(result).innerHTML = str;
+}
+
+// substr
+proc3 = () => {
+	sub = vstr.substr(5, 4); // 5부터 4개 - 우리나라 // sub의 결과는 문자열
+	res = "vstr.substr(5, 4)";
+	printStr('result3');
+}
+function printStr(result){
+	
+	str = vstr + "<br>";
+	str += res + " : " + sub + "<br>";
+	
+	document.getElementById(result).innerHTML = str;
+}
+
+// split - 여기선 공백을 기준으로 자름
+proc4 = () => {
+	sub = vstr.split(" "); // sub의 결과는 배열
+	res = 'vstr.split(" ")'; // 큰따옴표 두개 오면 오류 -> ''로 바꿈
+	printStr('result4');
+}
+
+// replace
+proc5 = () => {
+	// 방법1
+	/* sub = vstr.replaceAll(" ", ""); // 공백있는걸 공백없는걸로
+	res = 'vstr.replaceAll(" ", "")';
+	printStr('result5'); */
+	
+	// 방법2
+	// textarea의 입력한 값을 가져온다 -> id=area인 요소에 접근하여 검색 -> value 얻음
+	//varea = document.querySelector('#area').value;
+	varea = document.getElementById('area').value;
+	
+	// 엔터기호를 br태그로 변경
+	va = varea.replaceAll(/\n/g, "<br>"); // 정규식은 / / 안에  써야함  // /\r\n/g -> \r빼도됨
+	
+	// id=result5에 출력
+	//document.getElementById('result5').innerHTML = va;
+	document.querySelector('#result5').innerHTML = va;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+	<h3>문자열추출 및 자르기</h3>
+
+	<input type="button" value="substring" onclick="proc1()">
+	<input type="button" value="slice" onclick="proc2()">
+	<input type="button" value="substr" onclick="proc3()">
+	
+	<div id="result1" class="result"></div>
+	<div id="result2" class="result"></div>
+	<div id="result3" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>문자열 분리 후 배열로 전환</h3>
+
+	<input type="button" value="split" onclick="proc4()">
+	<div id="result4" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>문자열 변경 - textarea에 입력한 엔터기호를 &lt;br>로 바꿔서 div에 출력</h3>
+	
+	<textarea id="area" rows="" cols=""></textarea>
+	<br>
+
+	<input type="button" value="replace" onclick="proc5()">
+	<div id="result5" class="result"></div>
+</div>
+</body>
+</html>

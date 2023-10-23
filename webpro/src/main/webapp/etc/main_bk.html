@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MAIN</title>
+<link rel="stylesheet" href="../css/main.css">
+
+<!-- <link rel="shortcut icon" type="image/x-icon" href="../images/clothesWebLogo.png/> -->
+</head>
+
+<body>
+<div id="container">
+	<header>
+		<img src="../images/clothesLogo.png" alt="clothesLogo.png">
+		<a href="main.html" target="_self">ru Cabinet</a>
+	</header>
+	
+	
+	<nav id="nav">
+		<ul>
+			<li id="navHome">
+				<a href="main.html">HOME</a>
+
+			</li>
+			
+			<li>
+				<a href="#">ABOUT US</a>
+			</li>
+			
+			<li>
+				<a href="#">NOTICE</a>
+			</li>
+			
+			<li>
+				<a href="#">CONTACTS</a>
+			</li>
+			
+			<li>
+				<a href="#">Q/A</a>
+			</li>
+		</ul>
+	</nav>
+	
+	<div id="content">
+	<aside id="left">
+		<br><h1>CATEGORY</h1><br><br>
+		<div>
+		<ul>
+			<li><a href="outer.html" target="iframe">OUTER</a></li>
+		
+			<li><a href="top.html" target="iframe">TOP</a></li>
+		
+			<li><a href="bottom.html" target="iframe">BOTTOM</a></li>			
+		
+			<li><a href="ops.html" target="iframe">OPS</a></li>	
+		
+			<li><a href="shoes.html" target="iframe">SHOES</a></li>		
+		
+			<li><a href="acc.html" target="iframe">ACC</a></li>		
+		</ul>
+		</div>
+	</aside>
+	
+	<section>
+		<div><iframe name="iframe" src="video.html" style="border:none"></iframe></div>
+	</section>
+	
+	
+	<aside id="right">
+		<div id="login"><br>
+		<form>
+			<h2>LOGIN</h2><br><br>
+			<label>ID</label><br><input type="text" style="width:70%;"><br><br>
+			<label>PW</label><br><input type="text" style="width:70%;"><br><br><br>
+			<input type="button" value="LOGIN" onclick="alert('Could not login due to server maintenance.\nWe apologize for any inconvenience.')">
+			<a href="join.html" target="_blank"><input type="button" value="JOIN"></a>
+			<input type="button" value="LOST PW" onclick="alert('Could not lostpw due to server maintenance.\nWe apologize for any inconvenience.')">
+			<br><br>
+			<input id="resetbtn" type="reset" value="RESET">
+			</form>
+		</div>
+			
+		
+		<hr><br>
+		<div id="cart"><br>
+			<h2>SHOPPING CART</h2><br>
+			<h5>현재 쇼핑카트에 물품이 없습니다</h5>
+			<a href="cart.html" target="iframe"><input type="button" value="CART GO"></a>
+		</div>	
+	</aside>
+	</div>
+	
+	<footer>
+		<p>ruCabinet by ruruye Copyright ©2023 ruruye</p>
+	</footer>
+</div>
+</body>
+</html>

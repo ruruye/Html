@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+h1{
+	background-color : yellow;
+}
+
+pre{
+	border : 4px double blue;
+	border-left : none;
+	border-right : none;
+	background : #B9E2FA;
+	padding : 10px;
+	margin : 10px;
+	font-size : 1.5rem;
+}
+
+.box{
+	border : 3px double blue;
+/* 	background : skyblue; */
+	background-image : linear-gradient(skyblue, white); /*radial-gradient(skyblue, white)*/
+	margin : 10px;
+	padding : 10px;
+}
+
+.box input[type=button], .box button[type=button]{
+	background : blue;
+	color : white;
+	font-size : 20px;
+	width : 100px;
+	height : 40px;
+	border-radius: 20px;
+}
+.box .result{
+	border : 1px dotted red;
+	margin : 10px;
+	padding : 10px;
+	font-size: 1.5rem; /*body(루트)기준 1.5배*/
+}

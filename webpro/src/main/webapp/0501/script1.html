@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+
+window.onload = function(){
+	
+
+	let today = new Date();
+	let day1 = today.toLocaleString();
+	//document.write("Hello World"); // 먼저 Hello World 출력하고 div생김
+	
+	// id=res인 요소 검색
+	var vRes = document.querySelector('#res');
+	
+	//vRes.innerHTML = today;
+	//vRes.innerHTML = day1; // day1으로 덮어쓰기 됨 --> script 3 하거나 +=
+	vRes.innerHTML = today + "<br>";
+ 	vRes.innerHTML += day1;
+}
+</script>
+
+<style>
+#res{
+	border : 1px solid blue;
+	padding : 20px;
+}
+</style>
+</head>
+<body>
+	<div id="res"></div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Main</title>
+<link rel="stylesheet" href="../css/main.css">
+<link rel="shortcut icon" type="image/x-icon" href="../images/clothesWebLogo.png"/>
+
+</head>
+<body>
+<div id="container">
+    <header class="text-center">
+        <img src="../images/clothesLogo.png" alt="ruCabinet Logo" class="logo">
+        <a href="main.html" target="_self" class="font-sil">ru Cabinet</a>
+    </header>
+    <nav>
+        <ul class="font-sil text-uppercase">
+            <li id="navHome"><a href="main.html">home</a></li>
+            <li><a href="#">about us</a></li>
+            <li><a href="#">notice</a></li>
+            <li><a href="#">contacts</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <aside id="left-aside" class="font-sil text-uppercase text-center">
+            <h1>category</h1>
+            <ul>
+                <li><a href="outer.html" target="iframe">outer</a></li>
+                <li><a href="top.html" target="iframe">top</a></li>
+                <li><a href="bottom.html" target="iframe">bottom</a></li>
+                <li><a href="ops.html" target="iframe">ops</a></li>
+                <li><a href="shoes.html" target="iframe">shoes</a></li>
+                <li><a href="acc.html" target="iframe">acc</a></li>
+            </ul>
+        </aside>
+        <section>
+            <iframe name="iframe" src="video.html"></iframe>
+        </section>
+        <aside id="right-aside">
+	        <form>
+	            <div id="login">
+	                <h2 class="font-sil text-uppercase text-center">login</h2>
+	                <div class="text-center" id="loginBox">
+	                    <input type="text" id="login_id" class="input-text" placeholder="ID">
+	                    <input type="text" id="login_pw" class="input-text" placeholder="PW">
+	                </div>
+	                <div class="text-center">
+	                	<a class="button text-uppercase" href="javascript:alert('Could not login due to server maintenance.\nWe apologize for any inconvenience.');">login</a>
+	                    <a class="button text-uppercase" href="join.html" target="_blank">join</a>
+	                    <a class="button text-uppercase" href="javascript:alert('Could not lostpw due to server maintenance.\nWe apologize for any inconvenience.');">lost pw</a>
+	                </div>
+	                <div class="text-center">
+						<button type="reset" id="resetbtn" class="button text-uppercase">reset</button>
+	                </div>
+	            </div>
+	            <hr>
+	            <div id="cart" class="text-center">
+	                <h2 class="font-sil text-uppercase">shopping cart</h2>
+	                <h5 class="">현재 쇼핑카트에 물품이 없습니다</h5>
+	                <a href="cart.html" target="iframe" class="button text-uppercase">cart go</a>
+	            </div>
+	        </form>
+        </aside>
+    </div>
+    <footer class="text-center">
+        <p>ruCabinet by ruruye Copyright ©2023 ruruye</p>
+    </footer>
+</div>
+</body>
+</html>

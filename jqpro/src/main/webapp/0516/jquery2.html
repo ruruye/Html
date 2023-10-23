@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<!-- <script src="../js/jquery-3.7.0.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+// jquery와 script와 혼용해서 사용할 수 있음
+
+/* window.onload = function(){
+$('#result1').css('background', 'yellow'); // 얘는 실행x -> 실행순서가 스크립트부터 실행하기 때문 -> window.onload붙이기
+} */
+
+ $(document).ready(function(){
+	//$('#result1').css('background', 'blue');
+	document.getElementById('result1').style.background = "red"; 
+	
+	$('#btn1').on('click', function(){
+		$('#result2').css('background', 'green');
+		//document.getElementById('result2').style.background = 'magenta';
+	})
+	
+	$('#btn3').on('click', function(){
+		
+	 	/* // result3 안의 h3검색
+		vres3 = document.getElementById('result3');
+		vh3 = vres3.getElementsByTagName('h3');
+		for(i=0; i<vh3.length; i++){
+			vh3[i].style.color = "red";
+		} 
+		
+		vh3[2].style.color = 'blue'; */
+		
+		$('#result3 h3').css('color', 'blue');
+		$('#result3 h3').eq(2).css('color', 'red');
+		
+	})
+})
+
+/* function proc1(){
+	alert("hello")
+} -> 실행안됨*/
+
+
+</script>
+</head>
+
+<body>
+<div class="box">
+	<h3>버튼없이 실행시 즉시 실행</h3>
+	 window.onload = function(){}<br>
+	 $(document).ready(function(){})<br>
+	 
+	<div id="result1" class="result"></div>
+</div>
+
+<!-- <script>
+$('#result1').css('background', 'green');
+</script> -->
+
+<div class="box">
+	<h3>onclick이벤트를 jquery에서 실행</h3>
+	
+	<input type="button" value="확인" id="btn1">
+	<div id="result2" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>onclick이벤트를 jquery에서 실행</h3>
+	
+	<input type="button" value="확인" id="btn3">
+	<div id="result3" class="result">
+		<h3>무궁화 꽃이 피었습니다</h3>
+		<h3>능소화 꽃이 피었습니다</h3>
+		<h3>장미 꽃이 피었습니다</h3>
+		<h3>라일락 꽃이 피었습니다</h3>
+		<h3>개나리 꽃이 피었습니다</h3>
+	</div>
+</div>
+
+</body>
+</html>

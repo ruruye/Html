@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+
+
+
+
+</script>
+</head>
+<body>
+<div class="box">
+	<h3>추가버튼 클릭시 랜덤으로 문자열추가</h3>
+	<h3>삭제버튼 클릭시 아래(위)에서부터 차례대로 삭제한다</h3>
+
+	<input type="button" value="추가" onclick="proc1()">
+	<input type="button" value="삭제" onclick="proc2()">
+	<div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>추가버튼 클릭시 랜덤으로 문자열추가, 삭제버튼 추가</h3>
+	<h3>삭제버튼 클릭시 해당 p태그 삭제</h3>
+
+	<input type="button" value="추가삭제" onclick="proc3()">
+	<div id="result3" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>시작버튼 클릭하면 첫 번째 이미지(index: 0)를 result4의 맨뒤로 추가</h3>
+	<h3>첫 번째 이미지가 뒤로 추가될 때  첫번째 이미지는 삭제 - 이동의 의미</h3>
+	<h3>
+	1초마다 반복적으로 실행<br>
+	시작버튼은 클릭하면 감췄다가 종료 버튼 클릭 시 다시 표시
+	</h3>
+
+	<input type="button" value="시작" onclick="proc4(this)">
+<!-- 	<input type="button" value="시작" id="start" onclick="proc4Id()"> -->
+	<input type="button" value="종료" onclick="proc5()">
+	<div id="result4" class="result">
+		<img src="../images/가구2.jpg" alt="가구2.jpg">
+		<img src="../images/국화.jpg" alt="국화.jpg">
+		<img src="../images/딸기스무디.jpg" alt="딸기스무디.jpg">
+		<img src="../images/Koala.jpg" alt="Koala.jpg">
+		<img src="../images/spongebob.png" alt="spongebob.png">
+	</div>
+</div>
+
+</div>
+</body>
+</html>
